@@ -11,6 +11,23 @@
     </head>
 
     <body>
+        <div class="modal fade" id="port-number-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" style="color: black !important;">Please enter the port number for the web API:</h5>
+                </div>
+                <div class="modal-body">
+                    <label for="port-number-value" style="color: black !important;">Port Number:</label>
+                    <input type="text" class="form-control" id="port-number-value">
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="port-number-submit">Submit</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
         <div class="modal fade" id="comment-edit-modal" tabindex="-1" aria-labelledby="CommentEditModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -121,6 +138,18 @@
 
         <script type="text/javascript">
 
+            var portNumber;
+
+            $(document).ready(function(){
+                $("#port-number-modal").modal('show');
+            });
+
+            /* */
+            $("#port-number-submit").on("click", function(){
+                portNumber = $("#port-number-value").val();
+            });
+            /* */
+
             /* START - SELECT USER FROM DROP DOWN TO VIEW ALL TRANSACTIONS */
             var clientData = {
                 id : "",
@@ -137,7 +166,7 @@
             function TransactionPolling(_clientID)
             {
                 $.ajax({
-                        url: "https://localhost:7165/client/" + _clientID,
+                        url: "https://localhost:" + portNumber + "/client/" + _clientID,
                         type: "GET",
                         cache: true,
                         success: function(response)
@@ -149,7 +178,7 @@
                             clientData.lastname = response.surname;
 
                             $.ajax({
-                                url: "https://localhost:7165/transactions/" + clientData.id,
+                                url: "https://localhost:" + portNumber + "/transactions/" + clientData.id,
                                 type: "GET",
                                 cache: true,
                                 success: function(response)
@@ -239,7 +268,7 @@
             /* START - SUBMIT COMMENT UPDATE */
             $(".submit-comment-update").on("click", function(){
                 $.ajax({
-                    url: "https://localhost:7165/transactions/" + $("#edit-comment-id").val() + "/" + $("#edit-comment-value").val(),
+                    url: "https://localhost:" + portNumber + "/transactions/" + $("#edit-comment-id").val() + "/" + $("#edit-comment-value").val(),
                     type: "POST",
                     contentType: "application/json",
                     success: function()
@@ -272,7 +301,7 @@
 
             /* START - DISPLAYS CLIENT NAMES IN VIEW TRANSACTION AND MAKE TRANSACTION DROP DOWNS */
             $.ajax({
-                url: "https://localhost:7165/clients",
+                url: "https://localhost:" + portNumber + "/clients",
                 type: "GET",
                 cache: true,
                 success: function(response)
@@ -310,7 +339,7 @@
 
             /* START - DISPLAYS ALL TRANSACTION TYPES IN DROP DOWN */
             $.ajax({
-                url: "https://localhost:7165/transactiontypes",
+                url: "https://localhost:" + portNumber + "/transactiontypes",
                 type: "GET",
                 cache: true,
                 success: function(response)
@@ -387,7 +416,7 @@
                     console.log(amount);
 
                     $.ajax({
-                        url: "https://localhost:7165/transactions",
+                        url: "https://localhost:" + portNumber + "/transactions",
                         type:"POST",
                         data: JSON.stringify({"amount" : amount, "transactionTypeID" : transactionTypeSelected, "clientID" : clientIDSelected, "comment" : $("#comment").val()}),
                         contentType: "application/json",
