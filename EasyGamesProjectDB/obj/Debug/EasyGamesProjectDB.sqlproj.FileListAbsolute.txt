@@ -1,0 +1,6 @@
+C:\Users\user-pc\source\repos\EasyGamesProjectAPI\EasyGamesProjectDB\bin\Debug\EasyGamesProjectDB.dacpac
+C:\Users\user-pc\source\repos\EasyGamesProjectAPI\EasyGamesProjectDB\bin\Debug\EasyGamesProjectDB.dll
+C:\Users\user-pc\source\repos\EasyGamesProjectAPI\EasyGamesProjectDB\bin\Debug\EasyGamesProjectDB.pdb
+C:\Users\user-pc\source\repos\EasyGamesProjectAPI\EasyGamesProjectDB\obj\Debug\EasyGamesProjectDB.sqlproj.AssemblyReference.cache
+C:\Users\user-pc\source\repos\EasyGamesProjectAPI\EasyGamesProjectDB\obj\Debug\EasyGamesProjectDB.dll
+C:\Users\user-pc\source\repos\EasyGamesProjectAPI\EasyGamesProjectDB\obj\Debug\EasyGamesProjectDB.pdb

@@ -1,0 +1,12 @@
+C:\Users\user-pc\source\repos\EasyGamesProjectAPI\EasyGamesProjectDataAccess\bin\Debug\net6.0\EasyGamesProjectDataAccess.deps.json
+C:\Users\user-pc\source\repos\EasyGamesProjectAPI\EasyGamesProjectDataAccess\bin\Debug\net6.0\EasyGamesProjectDataAccess.dll
+C:\Users\user-pc\source\repos\EasyGamesProjectAPI\EasyGamesProjectDataAccess\bin\Debug\net6.0\EasyGamesProjectDataAccess.pdb
+C:\Users\user-pc\source\repos\EasyGamesProjectAPI\EasyGamesProjectDataAccess\obj\Debug\net6.0\EasyGamesProjectDataAccess.csproj.AssemblyReference.cache
+C:\Users\user-pc\source\repos\EasyGamesProjectAPI\EasyGamesProjectDataAccess\obj\Debug\net6.0\EasyGamesProjectDataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user-pc\source\repos\EasyGamesProjectAPI\EasyGamesProjectDataAccess\obj\Debug\net6.0\EasyGamesProjectDataAccess.AssemblyInfoInputs.cache
+C:\Users\user-pc\source\repos\EasyGamesProjectAPI\EasyGamesProjectDataAccess\obj\Debug\net6.0\EasyGamesProjectDataAccess.AssemblyInfo.cs
+C:\Users\user-pc\source\repos\EasyGamesProjectAPI\EasyGamesProjectDataAccess\obj\Debug\net6.0\EasyGamesProjectDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\user-pc\source\repos\EasyGamesProjectAPI\EasyGamesProjectDataAccess\obj\Debug\net6.0\EasyGamesProjectDataAccess.dll
+C:\Users\user-pc\source\repos\EasyGamesProjectAPI\EasyGamesProjectDataAccess\obj\Debug\net6.0\refint\EasyGamesProjectDataAccess.dll
+C:\Users\user-pc\source\repos\EasyGamesProjectAPI\EasyGamesProjectDataAccess\obj\Debug\net6.0\EasyGamesProjectDataAccess.pdb
+C:\Users\user-pc\source\repos\EasyGamesProjectAPI\EasyGamesProjectDataAccess\obj\Debug\net6.0\ref\EasyGamesProjectDataAccess.dll
