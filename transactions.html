@@ -11,23 +11,6 @@
     </head>
 
     <body>
-        <div class="modal fade" id="port-number-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" style="color: black !important;">Please enter the port number for the web API:</h5>
-                </div>
-                <div class="modal-body">
-                    <label for="port-number-value" style="color: black !important;">Port Number:</label>
-                    <input type="text" class="form-control" id="port-number-value">
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="port-number-submit">Submit</button>
-                </div>
-            </div>
-            </div>
-        </div>
-
         <div class="modal fade" id="comment-edit-modal" tabindex="-1" aria-labelledby="CommentEditModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -138,17 +121,7 @@
 
         <script type="text/javascript">
 
-            var portNumber;
-
-            $(document).ready(function(){
-                $("#port-number-modal").modal('show');
-            });
-
-            /* */
-            $("#port-number-submit").on("click", function(){
-                portNumber = $("#port-number-value").val();
-            });
-            /* */
+            var portNumber = 7165;
 
             /* START - SELECT USER FROM DROP DOWN TO VIEW ALL TRANSACTIONS */
             var clientData = {
