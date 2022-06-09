@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <link href="Styles/common.css" rel="stylesheet">
+        <link href="Styles/index.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div id="background">
+        </div>
+        <div id="header">
+            <div id="header-text">
+                <h1>Play and Win!</h1>
+                <p>Big cash prizes to be won! Enter our weekly draws to stand a chance to win free movie tickets!</p>
+            </div>
+        </div>
+        <div id="main-body">
+            <h1>Welcome to Easy Games</h1>
+
+            <div class="row text-center h-100">
+                <div class="col-sm-4">
+                    <div class="card easy-selection" style="width: 20rem; height: 20rem; background-color: #000010;">
+                        <div class="card-body align-items-center d-flex justify-content-center" style="z-index: 1;">
+                            <h2>
+                                <a href="transactions.html">Make Transactions</a>
+                            </h2>
+                        </div>
+                        <img class="card-img-top" src="Images/transaction.jpg" alt="Card image" style="width:100%; height: 100%; position: absolute; z-index: 0;">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card easy-selection" style="width: 20rem; height: 20rem; background-color: #000010;">
+                        <div class="card-body align-items-center d-flex justify-content-center" style="z-index: 1;">
+                            <h2>
+                                <a href="#">Play Kingdom Come!</a>
+                            </h2>
+                        </div>
+                        <img class="card-img-top" src="Images/casino-game-1.jpg" alt="Card image" style="width:100%; height: 100%; position: absolute; z-index: 0;">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card easy-selection" style="width: 20rem; height: 20rem;">
+                        <div class="card-body align-items-center d-flex justify-content-center">
+                            <h2 style="color: black;">
+                                <a href="">Coming Soon</a>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="height: 100px;">
+
+        </div>
+
+        <script type="text/javascript">
+            $(".easy-selection").mouseenter(
+                function(){
+                    $(this).animate({width: '25rem', height: '25rem'}, "slow");
+                }
+            );
+
+            $(".easy-selection").mouseleave(
+                function(){
+                    $(this).animate({width: '20rem', height: '20rem'}, "slow");
+                }
+            );
+        </script>
+    </body>
+
+</html>
