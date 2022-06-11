@@ -167,6 +167,14 @@
                                             {
                                                 responseTransaction[iteration].firstName = responseClient.firstName;
                                                 responseTransaction[iteration].surname = responseClient.surname;
+                                                responseTransaction[iteration].comment = responseTransaction[iteration].comment + 
+                                                    `<a href="#">
+                                                        <span class="glyphicon edit-comment-row" data-bs-toggle="modal" data-bs-target="#comment-edit-modal">
+                                                            &#x270f;
+                                                            <input type="hidden" id="transaction-comment-id" value="${responseTransaction[iteration].transactionID}">
+                                                            <input type="hidden" id="transaction-comment-value" value="${responseTransaction[iteration].comment}">
+                                                        </span>
+                                                    </a>`;
                                             }
                                                 
                                             callback({data: responseTransaction});
