@@ -70,21 +70,12 @@
                                         <th scope="col">Client Surname</th>
                                         <th scope="col">
                                             Amount
-                                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
-                                                <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
-                                            </svg> -->
                                         </th>
                                         <th scope="col">
                                             Transaction Type
-                                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
-                                                <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
-                                            </svg> -->
                                         </th>
                                         <th scope="col">
-                                            Comment 
-                                            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
-                                                <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
-                                          </svg> -->
+                                            Comment
                                         </th>
                                     </tr>
                                 </thead>
@@ -152,93 +143,65 @@
 
             var timeoutInstance;
 
+            var transactionTable;
+
             //Updates new transactions dynmically (Polling)
-            function TransactionPolling(_clientID)
+            function TransactionPolling(_clientID, reset)
             {
-                $.ajax({
-                        url: "https://localhost:" + portNumber + "/client/" + _clientID,
-                        type: "GET",
-                        cache: true,
-                        success: function(response)
-                        {
-                            $(".client-view-transaction-button").text(response.firstName + " " + response.surname);
-
-                            clientData.id = response.clientID;
-                            clientData.firstname = response.firstName;
-                            clientData.lastname = response.surname;
-
+                if(reset)
+                {
+                    transactionTable = $(".table").DataTable({
+                        destroy: true,
+                        ajax: function(data, callback, settings){
                             $.ajax({
-                                url: "https://localhost:" + portNumber + "/transactions/" + clientData.id,
-                                type: "GET",
-                                cache: true,
-                                success: function(response)
-                                {
-                                    if(response.length > 0)
-                                    {
-                                        $("#table-body").html("");
-
-                                        $('.client-error').removeClass("visible");
-                                        $('.client-error').addClass("invisible");
-
-                                        $('.client-table').removeClass("invisible");
-                                        $('.client-table').addClass("visible");
-
-                                        $('.client-error').text("");
-
-                                        $.each(response, function (key, value)
+                                url: "https://localhost:" + portNumber + "/client/" + _clientID,
+                                dataType: "json",
+                                success: function(responseClient){
+                                    $.ajax({
+                                        url: "https://localhost:" + portNumber + "/transactions/" + _clientID,
+                                        type: "GET",
+                                        cache: true,
+                                        success: function(responseTransaction)
                                         {
-                                            clientData.amount = value.amount;
-                                            clientData.comment = value.comment;
-                                            clientData.transactiontype = value.transactionTypeID;
+                                            for(var iteration in responseTransaction)
+                                            {
+                                                responseTransaction[iteration].firstName = responseClient.firstName;
+                                                responseTransaction[iteration].surname = responseClient.surname;
+                                            }
+                                                
+                                            callback({data: responseTransaction});
 
-                                            $("#table-body").append(
-                                                `<tr>
-                                                    <td>${clientData.firstname}</td>
-                                                    <td>${clientData.lastname}</td>
-                                                    <td>${clientData.amount}</td>
-                                                    <td>${clientData.transactiontype}</td>
-                                                    <td>
-                                                        ${clientData.comment}
-                                                        <a href="#">
-                                                            <span class="glyphicon edit-comment-row" data-bs-toggle="modal" data-bs-target="#comment-edit-modal">
-                                                                &#x270f;
-                                                                <input type="hidden" id="transaction-comment-id" value="${value.transactionID}">
-                                                                <input type="hidden" id="transaction-comment-value" value="${value.comment}">
-                                                            </span>
-                                                        </a>
-                                                    </td>
-                                                </tr>`
-                                            );
-                                        });
-                                    }
-                                    else
-                                    {
-                                        $('.client-table').removeClass("visible");
-                                        $('.client-table').addClass("invisible");
-
-                                        $('.client-error').removeClass("invisible");
-                                        $('.client-error').addClass("visible");
-
-                                        $('.client-error').text(`No transactions for ${clientData.firstname} ${clientData.lastname}`);
-                                    }
-                                },
+                                            $("#client-balance").text(responseClient.clientBalance);
+                                            
+                                            TransactionPolling(_clientID);
+                                        }
+                                    });
+                                }
                             });
-
-                            $("#client-balance").text(response.clientBalance);
                         },
-                        complete: function()
-                        {
-                            clearTimeout(timeoutInstance);
-                            timeoutInstance = setTimeout(TransactionPolling, 1000, _clientID);
-                        }
+                        columns:[
+                            { data : 'firstName' },
+                            { data : 'surname' },
+                            { data : 'amount' },
+                            { data : 'transactionTypeID' },
+                            { data : 'comment' }
+                        ],
                     });
+                }
+                else
+                {
+                    clearInterval(timeoutInstance);
+                    timeoutInstance = setInterval( function () {
+                        transactionTable.ajax.reload();
+                        TransactionPolling(_clientID);
+                    }, 1000);
+                }
             }
 
             $(".view-transaction-client-list").on("click", ".view-transaction-client-item", function(){
-                clearTimeout(timeoutInstance);
-                
+                $(".view-transaction-client-button").text($(this).text());
                 $(this).find('input[type=hidden]').each(function(){
-                    TransactionPolling($(this).val());
+                    TransactionPolling($(this).val(), true);
                 });
             });
             /* END - SELECT USER FROM DROP DOWN TO VIEW ALL TRANSACTIONS */
@@ -402,8 +365,6 @@
                     {
                         amount = -Math.abs($("#amount").val());
                     }
-
-                    console.log(amount);
 
                     $.ajax({
                         url: "https://localhost:" + portNumber + "/transactions",
