@@ -14,8 +14,8 @@
 
 ## Optional:
 
-- [ ] Filtering
-- [ ] Ordering
+- [x] Filtering
+- [x] Ordering
 - [x] Well designed interface using jQuery/Ajax, Bootstrap and custom CSS - View are available under the Views branch (port number may need to be changed).
 - [x] Used stored procedures for CRUD operations.
 - [x] Use Dapper
