@@ -22,7 +22,11 @@
 
 # Comments:
 
-I was able to learn a lot about building a web API from scratch using ASP.NET. I started the project on the 5/06/2022 and was able to learn the basic concepts of ASP.NET and APIs fast enough. Unfortunately, I was not able to do certain optional tasks due to time constraints. I also have good knowledge of Android Development with Java and can be viewed from my Repo: https://github.com/Oomeeth/Cr8v-Properties. Thank you.
+I was able to learn a lot about building a web API from scratch using ASP.NET. I started the project on the 5/06/2022 and was able to learn the basic concepts of ASP.NET and APIs fast enough. I was able to complete, both optional and required features.
+
+I also have good knowledge of Android Development with Java and can be viewed from my Repo: https://github.com/Oomeeth/Cr8v-Properties.
+
+Thank you.
 
 # Link to demo:
 
